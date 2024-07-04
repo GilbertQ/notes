@@ -21,9 +21,11 @@ function TaskList() {
   };
   
   const handleAddTask = (text) => {
+    if (text && text.trim() !== "") {
     const newtarea = [...tarea, { text, completed: false }];
     updateAndStoreTasks(newtarea);
   };
+};
   
   const handleToggleComplete = (index) => {
     const newtarea = [...tarea];
@@ -38,9 +40,11 @@ function TaskList() {
   };
   
   const handleSaveEdit = (index) => {
+    if (editText && editText.trim() !== "") {
     const newtarea = [...tarea];
     newtarea[index].text = editText;
     updateAndStoreTasks(newtarea);
+  };
     setEditIndex(-1); // Stop editing
   };
   
@@ -75,7 +79,9 @@ function TaskList() {
           handleAddTask(e.target.value);
           e.target.value = '';
         }
-      }} />
+      }} 
+      required
+      />
 <Grid item xs={12} style={{ flexGrow: 1, overflow: 'auto' }}>
       <List>
   {filteredtarea.map((task, index) => (
@@ -89,8 +95,8 @@ function TaskList() {
               value={editText}
               onChange={(e) => setEditText(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  handleSaveEdit(index);
+                if (e.key === 'Enter') {                  
+                  handleSaveEdit(index);                
                 } else if (e.key === 'Escape') {
                   handleCancelEdit();
                 }
