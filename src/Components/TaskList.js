@@ -63,7 +63,7 @@ function TaskList() {
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
       <h2>Task List</h2>
       <FormControl component="fieldset">
-        <FormLabel component="legend">Filter:</FormLabel>
+      <FormLabel component="legend" sx={{ textAlign: "left" }}>Filter:</FormLabel>
         <RadioGroup row aria-label="filter" value={filter} onChange={(e) => setFilter(e.target.value)}>
           <FormControlLabel value="all" control={<Radio />} label="All tasks" />
           <FormControlLabel value="active" control={<Radio />} label="Active tasks" />
